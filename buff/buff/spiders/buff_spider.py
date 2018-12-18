@@ -15,7 +15,6 @@ class DmozSpider(scrapy.Spider):
 
     def parse(self, response):
         data = response.xpath("/html/body/p/text()").extract()[0]
-        print data
         dt_data = json.loads(data)['data']['items']
         for obj in dt_data:
             item = BuffItem()
@@ -26,4 +25,3 @@ class DmozSpider(scrapy.Spider):
             item['sell_num'] = obj['sell_num']
             item['sell_min_price'] = obj['sell_min_price']
             item['steam_price'] = obj['goods_info']['steam_price']
-            print item  

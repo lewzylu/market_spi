@@ -1,24 +1,25 @@
 # -*- coding: utf-8 -*-
 import time
 import codecs
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-
-
+import os
 class BuffPipeline(object):
+    
     def __init__(self):
         _time = time.strftime('%Y-%m-%d',time.localtime(time.time()))
         try:
             os.makedirs(os.path.expanduser('~/SteamData/'))
         except:
             pass
-        self.file = codecs.open(os.path.expanduser(('~/SteamData/{_time}.csv'.format(_time)), 'wb', encoding='utf-8')
+        file_path = os.path.expanduser(('~/SteamData/{_time}.csv'.format(_time=_time)))
+        self.file = codecs.open(file_path, 'wb', encoding='utf-8')
+
+
     def process_item(self, item, spider):   
+        print item
         n = len(item['name'])
         #n = len(item['url'])
         for i in range(n):
+            print i
             self.file.write(item['game'][i].decode("utf-8") + '||')
             self.file.write(item['id'][i].decode("utf-8")  + '||')
             self.file.write(item['name'][i].decode("utf-8") + '||')
