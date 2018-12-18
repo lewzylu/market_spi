@@ -1,6 +1,6 @@
 import scrapy
 import json
-
+from buff.items import BuffItem
 class DmozSpider(scrapy.Spider):
     name = "buff"
     allowed_domains = ["163.com"]
@@ -15,22 +15,15 @@ class DmozSpider(scrapy.Spider):
 
     def parse(self, response):
         data = response.xpath("/html/body/p/text()").extract()[0]
-        # print data
+        print data
         dt_data = json.loads(data)['data']['items']
-        for item in dt_data:
-            print item['name']
-        # for info in response.xpath('//*[@id="j_list_card"]/ul/li'):
-        #     item = BuffItem()
-        #     name = info.xpath('li/h3/a').extract()
-        #     print name  
-            # price = info.xpath('li[@class="selling"]/p[@class="info"]/span/span[@class="price"]/text()').extract()
-            # num = info.xpath('li[@class="selling"]/p[@class="info"]/span[@class="num"]/text()').extract()
-             
-        #     item['name'] = [n.encode('utf-8') for n in name]
-        #     item['price'] = [p[2:].encode('utf-8') for p in price]  
-        #     item['num'] = [n[:-3].encode('utf-8') for n in num]
-        #     yield item
-        # next_page = response.xpath('//li[@class="next"]/a/@href')
-        # if next_page:
-        #     url = response.urljoin(next_page[0].extract())
-        #     yield scrapy.Request(url, self.parse)
+        for obj in dt_data:
+            item = BuffItem()
+            item['id'] = obj['id']
+            item['name'] = obj['name']
+            item['game'] = obj['game']
+            item['market_hash_name'] = obj['market_hash_name']
+            item['sell_num'] = obj['sell_num']
+            item['sell_min_price'] = obj['sell_min_price']
+            item['steam_price'] = obj['goods_info']['steam_price']
+            print item  

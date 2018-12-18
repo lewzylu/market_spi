@@ -42,8 +42,7 @@ ROBOTSTXT_OBEY = True
 DEFAULT_REQUEST_HEADERS = {
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
     'accept-language': 'zh-CN,zh;q=0.8',
-    'user-agent': 'zzz',
-    'Cookie': 'C5Machine=Ovey6XYeR8NpZF%2BZB1hcyQ%3D%3D; __jsluid=56ced18acd277ca2ac5cd27c7d9109c3; C5Machines=Ovey6XYeR8NpZF%2BZB1hcyQ%3D%3D; C5SessionID=s4kri2cl2mqfbmvganupgusc96; C5Token=5813f55b0b187; C5Login=13872847; C5ThirdLogin=1; C5Sign=1477756800; C5Lang=zh_CN; Hm_lvt_86084b1bece3626cd94deede7ecf31a8=1476769054,1476874744,1477702975,1477703002; Hm_lpvt_86084b1bece3626cd94deede7ecf31a8=1477705181'
+    'user-agent': 'test',
 }
 
 # Enable or disable spider middlewares

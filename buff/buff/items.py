@@ -11,6 +11,10 @@ import scrapy
 class BuffItem(scrapy.Item):
     # define the fields for your item here like:
     name = scrapy.Field()
-    price = scrapy.Field()
-    num = scrapy.Field()
+    market_hash_name = scrapy.Field()
+    sell_num = scrapy.Field()
+    id = scrapy.Field()
+    sell_min_price = scrapy.Field()
+    steam_price = scrapy.Field()
+    game = scrapy.Field()
     pass
